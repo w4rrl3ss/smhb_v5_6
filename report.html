@@ -1,0 +1,350 @@
+
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Monitoring Report</title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+                <style>
+                    body {
+                        background: #f8f9fa;
+                        font-family: 'Arial', sans-serif;
+                        color: #333;
+                    }
+                    .card {
+                        margin-bottom: 20px;
+                        border: none;
+                        border-radius: 15px;
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                        background: white;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                    }
+                    .card-header {
+                        background: linear-gradient(135deg, #6a11cb, #2575fc);
+                        color: white;
+                        font-weight: bold;
+                        border-radius: 15px 15px 0 0;
+                        padding: 15px;
+                    }
+                    .table {
+                        margin-bottom: 0;
+                    }
+                    .table thead th {
+                        background: #2575fc;
+                        color: white;
+                    }
+                    .table-hover tbody tr:hover {
+                        background-color: rgba(37, 117, 252, 0.1);
+                    }
+                    .alert {
+                        margin-bottom: 0;
+                        border-radius: 10px;
+                        padding: 10px;
+                        background: #ffdd57;
+                        color: #333;
+                    }
+                    .graph-container {
+                        background: white;
+                        padding: 20px;
+                        border-radius: 15px;
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    }
+                    h1, h2, h3, h4, h5, h6, p {
+                        color: #2575fc;
+                        font-weight: bold;
+                    }
+                    .icon {
+                        margin-right: 10px;
+                        color: #6a11cb;
+                    }
+                    .btn-custom {
+                        background: linear-gradient(135deg, #6a11cb, #2575fc);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        padding: 10px 20px;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .btn-custom:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+                    }
+                    .process-name {
+                        font-weight: bold;
+                        color: #2575fc;
+                    }
+                    .process-product {
+                        color: #6c757d;
+                        font-style: italic;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container mt-5">
+                    <div class="text-center mb-4">
+                        <h1 class="display-4"><i class="fas fa-chart-line icon"></i>Monitoring Report</h1>
+                        <p class="lead">System performance and resource usage overview</p>
+                    </div>
+
+                    <!-- Monitoring Details -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-info-circle icon"></i>Monitoring Details
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <tr><th>Start Time</th><td>29/03/2025 04:07:04</td></tr>
+                                <tr><th>End Time</th><td>29/03/2025 04:07:13</td></tr>
+                                <tr><th>Duration</th><td>00:02:00</td></tr>
+                                <tr><th>Log File</th><td>report.html</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- System Information -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-info-circle icon"></i>System Information
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3"><strong>Computer Name:</strong> W4RR-GAMER</div><div class="col-md-6 mb-3"><strong>Computer Model:</strong> MS-7817</div><div class="col-md-6 mb-3"><strong>System Manufacturer:</strong> MSI</div><div class="col-md-6 mb-3"><strong>Processor:</strong> Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz</div><div class="col-md-6 mb-3"><strong>OS:</strong> Windows 11</div><div class="col-md-6 mb-3"><strong>OS Version:</strong> 10.0.26100</div><div class="col-md-6 mb-3"><strong>Architecture:</strong> 64bit</div><div class="col-md-6 mb-3"><strong>Cores (Logical/Physical):</strong> 8/4</div><div class="col-md-6 mb-3"><strong>Total Memory (GB):</strong> 15.94</div><div class="col-md-6 mb-3"><strong>Available Memory (GB):</strong> 7.39</div><div class="col-md-6 mb-3"><strong>Used Memory (GB):</strong> 8.55</div><div class="col-md-6 mb-3"><strong>Disk Usage (%):</strong> 82.20</div><div class="col-md-6 mb-3"><strong>Network Sent (GB):</strong> 0.87</div><div class="col-md-6 mb-3"><strong>Network Received (GB):</strong> 11.47</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disk Drives -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-hdd icon"></i>Disk Drives
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Drive Letter</th>
+                                            <th>Mount Point</th>
+                                            <th>File System</th>
+                                            <th>Total Space (GB)</th>
+                                            <th>Used Space (GB)</th>
+                                            <th>Free Space (GB)</th>
+                                            <th>Usage (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>C:\</td><td>C:\</td><td>NTFS</td><td>222.65</td><td>183.09</td><td>39.55</td><td>82.20</td></tr><tr><td>E:\</td><td>E:\</td><td>NTFS</td><td>0.57</td><td>0.04</td><td>0.53</td><td>6.30</td></tr><tr><td>H:\</td><td>H:\</td><td>NTFS</td><td>933.27</td><td>659.67</td><td>273.60</td><td>70.70</td></tr><tr><td>I:\</td><td>I:\</td><td>FAT32</td><td>0.50</td><td>0.00</td><td>0.50</td><td>0.00</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monitoring Summary -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-pie icon"></i>Monitoring Summary
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6"><strong>Average CPU Usage:</strong> 6.46%</div>
+                                <div class="col-md-6"><strong>Average Memory Usage:</strong> 53.69%</div>
+                                <div class="col-md-6"><strong>Minimum CPU Usage:</strong> 0.00%</div>
+                                <div class="col-md-6"><strong>Maximum CPU Usage:</strong> 29.50%</div>
+                                <div class="col-md-6"><strong>Average Disk Usage:</strong> 82.20%</div>
+                                <div class="col-md-6"><strong>Average Network Sent:</strong> 0.87 GB</div>
+                                <div class="col-md-6"><strong>Average Network Received:</strong> 11.47 GB</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resource Usage Graph -->
+                    <div class="graph-container mt-4 text-center">
+                        <h2><i class="fas fa-chart-area icon"></i>Resource Usage Graph</h2>
+                        <img src="usage_graph.png" alt="Resource Usage Graph" class="img-fluid">
+                        <p class="mt-2">
+                            <span style="color: #4CAF50; font-weight: bold;">■</span> 
+                            <span style="color: #4CAF50;">Minimum CPU (0.00%)</span> | 
+                            <span style="color: #e74c3c; font-weight: bold;">■</span> 
+                            <span style="color: #e74c3c;">Maximum CPU (29.50%)</span>
+                        </p>
+                    </div>
+
+                    <!-- Selected Processes -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-tasks icon"></i>Selected Processes (Monitored)
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Process Name</th>
+                                            <th>Count</th>
+                                            <th>CPU Usage (%)</th>
+                                            <th>Reservada (MB)</th>
+                                            <th>Memória Usada (%)</th>
+                                            <th>Conjunto de Trabalho (MB)</th>
+                                            <th>Compartilhável (MB)</th>
+                                            <th>Privado (MB)</th>
+                                            <th>Privado (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td><span class="process-name">chrome.exe</span><br><span class="process-product">Google Chrome</span></td><td>32</td><td>0.07%</td><td>3870.84 MB</td><td>23.71%</td><td>3870.84 MB</td><td>523.70 MB</td><td>3347.14 MB</td><td>20.50%</td></tr><tr><td><span class="process-name">python.exe</span><br><span class="process-product">Python</span></td><td>1</td><td>2.62%</td><td>198.13 MB</td><td>1.21%</td><td>198.13 MB</td><td>-433.85 MB</td><td>631.98 MB</td><td>3.87%</td></tr><tr><td><span class="process-name">smhb_v5_6.exe</span></td><td>2</td><td>0.03%</td><td>220.72 MB</td><td>1.35%</td><td>220.72 MB</td><td>-416.03 MB</td><td>636.75 MB</td><td>3.90%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Processes by CPU -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-microchip icon"></i>Top 10 Processes by CPU (All)
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome Processo</th>
+                                            <th>Processos</th>
+                                            <th>CPU Usada (%)</th>
+                                            <th>Reservada (MB)</th>
+                                            <th>Memória Usada (%)</th>
+                                            <th>Conjunto de Trabalho (MB)</th>
+                                            <th>Compartilhável (MB)</th>
+                                            <th>Mem. Privado (MB)</th>
+                                            <th>Mem. Privado (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td><span class="process-name">System Idle Process</span></td><td>1</td><td>90.49%</td><td>0.01 MB</td><td>0.00%</td><td>0.01 MB</td><td>-0.05 MB</td><td>0.06 MB</td><td>0.00%</td></tr><tr><td><span class="process-name">python.exe</span><br><span class="process-product">Python</span></td><td>1</td><td>2.62%</td><td>198.13 MB</td><td>1.21%</td><td>198.13 MB</td><td>-433.85 MB</td><td>631.98 MB</td><td>3.87%</td></tr><tr><td><span class="process-name">System</span></td><td>1</td><td>0.95%</td><td>4.11 MB</td><td>0.03%</td><td>4.11 MB</td><td>4.06 MB</td><td>0.05 MB</td><td>0.00%</td></tr><tr><td><span class="process-name">dwm.exe</span><br><span class="process-product">Sistema Operacional Microsoft® Windows®</span></td><td>1</td><td>0.51%</td><td>103.99 MB</td><td>0.64%</td><td>103.99 MB</td><td>-173.38 MB</td><td>277.37 MB</td><td>1.70%</td></tr><tr><td><span class="process-name">chrome.exe</span><br><span class="process-product">Google Chrome</span></td><td>32</td><td>0.07%</td><td>3870.84 MB</td><td>23.71%</td><td>3870.84 MB</td><td>523.70 MB</td><td>3347.14 MB</td><td>20.50%</td></tr><tr><td><span class="process-name">WmiPrvSE.exe</span><br><span class="process-product">Microsoft® Windows® Operating System</span></td><td>2</td><td>0.30%</td><td>37.25 MB</td><td>0.23%</td><td>37.25 MB</td><td>22.45 MB</td><td>14.80 MB</td><td>0.09%</td></tr><tr><td><span class="process-name">zabbix_agentd.exe</span><br><span class="process-product">Zabbix</span></td><td>1</td><td>0.23%</td><td>17.33 MB</td><td>0.11%</td><td>17.33 MB</td><td>2.54 MB</td><td>14.79 MB</td><td>0.09%</td></tr><tr><td><span class="process-name">OfficeClickToRun.exe</span><br><span class="process-product">Microsoft 365 and Office</span></td><td>1</td><td>0.23%</td><td>61.85 MB</td><td>0.38%</td><td>61.85 MB</td><td>-3.20 MB</td><td>65.05 MB</td><td>0.40%</td></tr><tr><td><span class="process-name">svchost.exe</span><br><span class="process-product">Sistema Operacional Microsoft® Windows®</span></td><td>94</td><td>0.15%</td><td>1381.59 MB</td><td>8.46%</td><td>1381.59 MB</td><td>793.70 MB</td><td>587.89 MB</td><td>3.60%</td></tr><tr><td><span class="process-name">smhb_v5_6.exe</span></td><td>2</td><td>0.03%</td><td>220.72 MB</td><td>1.35%</td><td>220.72 MB</td><td>-416.03 MB</td><td>636.75 MB</td><td>3.90%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Processes by Memory -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-memory icon"></i>Top 10 Processes by Memory (All)
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Process Name</th>
+                                            <th>Count</th>
+                                            <th>CPU Usage (%)</th>
+                                            <th>Confirmar (MB)</th>
+                                            <th>Memory Usage (%)</th>
+                                            <th>Conjunto de Trabalho (MB)</th>
+                                            <th>Compartilhável (MB)</th>
+                                            <th>Privado (MB)</th>
+                                            <th>Privado (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td><span class="process-name">chrome.exe</span><br><span class="process-product">Google Chrome</span></td><td>32</td><td>0.07%</td><td>3870.84 MB</td><td>23.71%</td><td>3870.84 MB</td><td>523.70 MB</td><td>3347.14 MB</td><td>20.50%</td></tr><tr><td><span class="process-name">svchost.exe</span><br><span class="process-product">Sistema Operacional Microsoft® Windows®</span></td><td>94</td><td>0.15%</td><td>1381.59 MB</td><td>8.46%</td><td>1381.59 MB</td><td>793.70 MB</td><td>587.89 MB</td><td>3.60%</td></tr><tr><td><span class="process-name">explorer.exe</span><br><span class="process-product">Sistema operacional Microsoft® Windows®</span></td><td>2</td><td>0.07%</td><td>516.23 MB</td><td>3.16%</td><td>516.23 MB</td><td>-52.50 MB</td><td>568.73 MB</td><td>3.48%</td></tr><tr><td><span class="process-name">Deezer.exe</span><br><span class="process-product">Deezer</span></td><td>7</td><td>0.00%</td><td>474.58 MB</td><td>2.91%</td><td>474.58 MB</td><td>39.25 MB</td><td>435.33 MB</td><td>2.67%</td></tr><tr><td><span class="process-name">core.exe</span><br><span class="process-product">Topaz OFD - Protection</span></td><td>2</td><td>0.00%</td><td>448.05 MB</td><td>2.74%</td><td>448.05 MB</td><td>-156.35 MB</td><td>604.40 MB</td><td>3.70%</td></tr><tr><td><span class="process-name">MsMpEng.exe</span><br><span class="process-product">Microsoft® Windows® Operating System</span></td><td>1</td><td>0.00%</td><td>269.30 MB</td><td>1.65%</td><td>269.30 MB</td><td>-42.88 MB</td><td>312.18 MB</td><td>1.91%</td></tr><tr><td><span class="process-name">smhb_v5_6.exe</span></td><td>2</td><td>0.03%</td><td>220.72 MB</td><td>1.35%</td><td>220.72 MB</td><td>-416.03 MB</td><td>636.75 MB</td><td>3.90%</td></tr><tr><td><span class="process-name">python.exe</span><br><span class="process-product">Python</span></td><td>1</td><td>2.62%</td><td>198.13 MB</td><td>1.21%</td><td>198.13 MB</td><td>-433.85 MB</td><td>631.98 MB</td><td>3.87%</td></tr><tr><td><span class="process-name">dwm.exe</span><br><span class="process-product">Sistema Operacional Microsoft® Windows®</span></td><td>1</td><td>0.51%</td><td>103.99 MB</td><td>0.64%</td><td>103.99 MB</td><td>-173.38 MB</td><td>277.37 MB</td><td>1.70%</td></tr><tr><td><span class="process-name">msedgewebview2.exe</span><br><span class="process-product">Microsoft Edge WebView2</span></td><td>7</td><td>0.00%</td><td>30.05 MB</td><td>0.18%</td><td>30.05 MB</td><td>-370.22 MB</td><td>400.27 MB</td><td>2.45%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top 5 CPU Usage per Process -->
+                    
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-microchip icon"></i>Top 5 CPU Usage for chrome.exe | Google Chrome
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>CPU Usage (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>0.28%</td></tr><tr><td>2</td><td>0.00%</td></tr><tr><td>3</td><td>0.00%</td></tr><tr><td>4</td><td>0.00%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-microchip icon"></i>Top 5 CPU Usage for smhb_v5_6.exe
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>CPU Usage (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>0.14%</td></tr><tr><td>2</td><td>0.00%</td></tr><tr><td>3</td><td>0.00%</td></tr><tr><td>4</td><td>0.00%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-microchip icon"></i>Top 5 CPU Usage for python.exe | Python
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>CPU Usage (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>3.65%</td></tr><tr><td>2</td><td>3.60%</td></tr><tr><td>3</td><td>3.21%</td></tr><tr><td>4</td><td>0.00%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+                    <!-- Alerts -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-exclamation-triangle icon"></i>Alerts
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Alert Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            </html>
+            
