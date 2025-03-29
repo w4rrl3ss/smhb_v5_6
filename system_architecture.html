@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100vh;
+                 background-color: #2d3436;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": {"background": "#7048e8", "border": "#4d2ca3", "highlight": "#8c6cf7"}, "font": {"color": "white"}, "id": "SMHB_V5_6 (GUI/CLI)", "label": "SMHB_V5_6 (GUI/CLI)", "shadow": {"enabled": true, "size": 15, "x": 5, "y": 5}, "shape": "dot", "size": 45, "title": "User Interface Layer"}, {"color": {"background": "#3b5bdb", "border": "#2b4bb0", "highlight": "#5c7cfa"}, "font": {"color": "white"}, "id": "Monitoring Core", "label": "Monitoring Core", "shadow": {"enabled": true, "size": 20, "x": 7, "y": 7}, "shape": "box", "size": 55, "title": "Central Coordination Unit"}, {"color": {"background": "#40c057", "border": "#2f9e44", "highlight": "#69db7c"}, "font": {"color": "white"}, "id": "Data Collection", "label": "Data Collection", "shape": "circle", "size": 50, "title": "Metrics Gathering System"}, {"color": {"background": "#ff6b6b", "border": "#e05252", "highlight": "#ff8787"}, "font": {"color": "white"}, "id": "Alert System", "label": "Alert System", "shape": "triangle", "size": 50, "title": "Alert Management"}, {"color": {"background": "#34a853", "border": "#2b8c46", "highlight": "#48d166"}, "font": {"color": "white"}, "id": "System Resources", "label": "System Resources", "shape": "circle", "size": 60, "title": "Hardware Layer"}, {"color": {"background": "#228be6", "border": "#1a6db3", "highlight": "#3ba3ff"}, "font": {"color": "white"}, "id": "Windows Performance\nCounters", "label": "Windows Performance\nCounters", "shadow": {"enabled": true, "size": 25, "x": 10, "y": 10}, "shape": "database", "size": 60, "title": "Performance DLLs:\n\u2022 perfproc.dll\n\u2022 diskperf.dll\n\u2022 netperf.dll"}, {"color": {"background": "#15aabf", "border": "#1098aa", "highlight": "#2bcbdb"}, "font": {"color": "white"}, "id": "psutil", "label": "psutil", "shape": "circle", "size": 45, "title": "Cross-Platform Metrics"}, {"color": {"background": "#5c7cfa", "border": "#4b6ec7", "highlight": "#7e9cff"}, "font": {"color": "white"}, "id": "pywin32", "label": "pywin32", "shape": "diamond", "size": 50, "title": "Windows API Integration"}, {"color": {"background": "#1a73e8", "border": "#145cb4", "highlight": "#2e90ff"}, "font": {"color": "white"}, "id": "Performance DLLs", "label": "Performance DLLs", "shape": "box", "size": 55, "title": "Performance Libraries"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#5c7cfa", "from": "SMHB_V5_6 (GUI/CLI)", "length": 300, "to": "Monitoring Core", "width": 1}, {"arrows": "to", "color": "#40c057", "from": "Monitoring Core", "length": 300, "to": "Data Collection", "width": 1}, {"arrows": "to", "color": "#ff6b6b", "dashes": true, "from": "Monitoring Core", "length": 250, "to": "Alert System", "width": 1}, {"arrows": "to", "color": "#adb5bd", "from": "Monitoring Core", "length": 300, "to": "System Resources", "width": 1}, {"arrows": "to", "color": "#228be6", "from": "Data Collection", "length": 250, "to": "Windows Performance\nCounters", "width": 1}, {"arrows": "to", "color": "#15aabf", "from": "Data Collection", "length": 250, "to": "psutil", "width": 1}, {"arrows": "to", "color": "#5c7cfa", "from": "Windows Performance\nCounters", "length": 250, "to": "pywin32", "width": 1}, {"arrows": "to", "color": "#1a73e8", "from": "pywin32", "length": 250, "to": "Performance DLLs", "width": 1}, {"arrows": "to", "color": "#34a853", "from": "Performance DLLs", "length": 250, "to": "System Resources", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"stabilization": {"enabled": true, "iterations": 2000, "updateInterval": 25}, "barnesHut": {"gravitationalConstant": -20000, "centralGravity": 0.1, "springLength": 300, "springConstant": 0.03, "damping": 0.15, "avoidOverlap": 1.0}, "minVelocity": 1.0, "maxVelocity": 50.0, "solver": "barnesHut"}, "nodes": {"borderWidth": 2, "shadow": {"enabled": true, "color": "rgba(0,0,0,0.5)", "size": 10, "x": 5, "y": 5}, "font": {"size": 20, "face": "Arial", "color": "#ffffff", "strokeWidth": 2, "strokeColor": "#2d3436"}}, "edges": {"smooth": {"type": "continuous", "roundness": 0.2}, "arrows": {"to": {"enabled": true, "scaleFactor": 2.0, "type": "arrow"}}, "color": {"inherit": false}, "shadow": {"enabled": true, "color": "rgba(0,0,0,0.3)", "size": 5, "x": 3, "y": 3}, "length": 250}, "interaction": {"hover": true, "tooltipDelay": 200, "hideEdgesOnDrag": false, "multiselect": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
