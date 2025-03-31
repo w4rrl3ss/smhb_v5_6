@@ -24,8 +24,11 @@ Este script monitora em tempo real:
 - Utilização de disco
 - Atividade de rede
 - Processos em execução
+- 
 
 Gera relatórios HTML estilizados com Bootstrap e gráficos interativos.
+
+![image](https://github.com/user-attachments/assets/da37926e-ec34-4216-a90f-2c5c52a0c163)
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -37,6 +40,8 @@ Gera relatórios HTML estilizados com Bootstrap e gráficos interativos.
   - `Bootstrap` (HTML) - Relatórios formatados
 
 ## 🏗️ Estrutura do Código
+
+![image](https://github.com/user-attachments/assets/56d80311-36f6-4420-b5da-265efa5540f9)
 
 ### 📦 Importações Principais
 ```python
