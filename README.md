@@ -14,6 +14,8 @@ Uma ferramenta avançada de monitoramento de sistema que fornece informações d
 ## 🏗️ Arquitetura do Sistema
 Para entender a estrutura e componentes do sistema, consulte a documentação de [Arquitetura do Sistema](https://w4rrl3ss.github.io/smhb_v5_6/system_architecture.html).
 
+![image](https://github.com/user-attachments/assets/9ae78071-e81b-4a9e-a641-aa7d50f729e8)
+
 ## 📌 Visão Geral
 
 Este script monitora em tempo real:
