@@ -1,9 +1,15 @@
-# System Monitoring Tool
+# System Monitoring Tool               
 
 <img width="222" alt="system_monitor_hyper_logo" src="https://github.com/user-attachments/assets/3a2eb494-9951-4c0e-80f2-a34fe1d5c2ff" />
 
 
 Uma ferramenta avançada de monitoramento de sistema que fornece informações detalhadas sobre o uso de recursos do computador, com interface gráfica (GUI).
+
+
+## 🏗️ Arquitetura do Sistema
+Para entender a estrutura e componentes do sistema, consulte a documentação de [Arquitetura do Sistema](https://w4rrl3ss.github.io/smhb_v5_6/system_architecture.html).
+
+[![Diagrama de Arquitetura](https://w4rrl3ss.github.io/smhb_v5_6/assets/images/arch_diagram.png)](https://w4rrl3ss.github.io/smhb_v5_6/system_architecture.html)
 
 ## 📌 Visão Geral
 
