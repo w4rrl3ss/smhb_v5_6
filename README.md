@@ -328,36 +328,3 @@ Desenvolvedores de software
 Analistas de performance
 
 Qualquer profissional que precise monitorar recursos do sistema
-
-
-Como Executar:
-1 - Clicar no executável smhb_v5_6.exe
-
-<img width="53" alt="exe" src="https://github.com/user-attachments/assets/809fa9d1-d272-4c44-bd04-7ba913c09dc5" />
-  
-2 -  Clicar com o mouse direito. 
-
-3 -  Clicar na aba Compatibilidade e selecionar: 
-“Executar este programa como administrador”. 
-
-4 -  Clicar em Aplicar.
-<img width="255" alt="conf_01" src="https://github.com/user-attachments/assets/e1f65f89-e230-4dc5-ae1f-8a26e6c16c82" />
-
-
-Configuration:
-Configuração dos itens para monitoramento
-<img width="379" alt="conf_02" src="https://github.com/user-attachments/assets/2cbedd77-ceae-47d5-8a1b-95ce68ba9332" />
-
-Monitoring:
-Real Time: Acompanhar o andamento dos processos CPU/Memória. Opção de usar o Script de “CPU Stress Controller” de forma simultânea clicando em  .
-Você pode parar a execução do script e obter os resultados parciais [Stop Monitoring].
-Você pode Limpar os Dados de Coleta para iniciar uma nova captura [Clear Data].
-<img width="377" alt="conf_03" src="https://github.com/user-attachments/assets/80afd2a0-0037-42b1-84ce-8dab3063ca42" />
-
-Instructions:
-Instruções de uso podem ser consultadas clicando em [Web Site],[System Architecture] e/ou consultando o texto contido no corpo da aba usando a barra de rolagem.
-No caso da consulta usando Web Site e/ou System Architecture você será redirecionado para o browser padrão. 
-<img width="398" alt="conf_04" src="https://github.com/user-attachments/assets/bbc7dfb6-79d8-49d6-bb89-b2b77ea654a3" />
-
-
-
