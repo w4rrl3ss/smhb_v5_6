@@ -220,13 +220,6 @@ Histórico de alertas
 
 Detalhes de hardware
 
-Exportação para CSV
-
-# 🚀 System Monitor 5.06 - Monitoramento Avançado de Recursos
-
-![System Monitor Dashboard](https://via.placeholder.com/800x400?text=System+Monitor+Dashboard)  
-*Monitoramento em tempo real com relatórios profissionais*
-
 ## 🎯 Objetivo Principal
 Monitorar em tempo real o desempenho do sistema (CPU, memória, disco, rede) e gerar **relatórios HTML detalhados** automaticamente após o término do monitoramento.
 
