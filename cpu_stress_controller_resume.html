@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Síntese Técnica - cpu_stress_controller.py</title>
+    <style>
+        :root {
+            --dark-bg: #2d2d2d;
+            --accent: #00ccff;
+            --accent-green: #00cc00;
+            --text-light: #f0f0f0;
+            --text-muted: #aaaaaa;
+            --card-bg: #3a3a3a;
+            --border-color: #444;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: var(--accent);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            color: var(--accent);
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+            margin-top: 30px;
+            font-weight: 400;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th {
+            background-color: var(--accent);
+            color: var(--dark-bg);
+            text-align: left;
+            padding: 10px;
+            font-weight: 500;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(0, 204, 255, 0.05);
+        }
+        
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent-green);
+            width: 50%;
+            transition: width 0.3s ease;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .note {
+            background-color: rgba(0, 204, 255, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark-bg);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Síntese Técnica do Script <span class="highlight">cpu_stress_controller.py</span></h1>
+        </header>
+        
+        <div class="card">
+            <h2>1. Objetivo Principal</h2>
+            <p>Controlar dinamicamente a carga da CPU através de processos paralelos, mantendo um percentual específico definido pelo usuário, com interface gráfica intuitiva.</p>
+        </div>
+        
+        <div class="card">
+            <h2>2. Arquitetura e Componentes Chave</h2>
+            <table>
+                <tr>
+                    <th>Componente</th>
+                    <th>Funcionalidade</th>
+                </tr>
+                <tr>
+                    <td>WorkerManager</td>
+                    <td>Gerenciador de processos paralelos (workers) que geram carga computacional.</td>
+                </tr>
+                <tr>
+                    <td>StressApp (GUI)</td>
+                    <td>Interface gráfica com controles interativos e monitoramento em tempo real.</td>
+                </tr>
+                <tr>
+                    <td>Sistema de Ajuste</td>
+                    <td>Algoritmo de controle que ajusta o número de workers para atingir a carga desejada.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>3. Mecanismos Técnicos</h2>
+            <table>
+                <tr>
+                    <th>Mecanismo</th>
+                    <th>Implementação</th>
+                </tr>
+                <tr>
+                    <td>Geração de Carga</td>
+                    <td><code>sum(x ** 3 for x in range(10**6)</code> em loop (intensivo em CPU).</td>
+                </tr>
+                <tr>
+                    <td>Controle de Workers</td>
+                    <td>Uso de <code>multiprocessing.Process</code> para paralelismo verdadeiro (evita GIL).</td>
+                </tr>
+                <tr>
+                    <td>Sincronização</td>
+                    <td><code>mp.Value</code> e <code>mp.Lock</code> para compartilhamento seguro de estado entre processos.</td>
+                </tr>
+                <tr>
+                    <td>Loop de Monitoramento</td>
+                    <td>Thread separada verifica a carga da CPU a cada 1 segundo e ajusta os workers.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>4. Interface Gráfica (GUI)</h2>
+            <table>
+                <tr>
+                    <th>Elemento</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <td>Escala de Controle</td>
+                    <td>Slider (20% a 100%) para definir a carga-alvo da CPU.</td>
+                </tr>
+                <tr>
+                    <td>Barra de Progresso</td>
+                    <td>
+                        <p>Exibe visualmente a carga atual da CPU vs. alvo (animação suave).</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Indicadores de Status</td>
+                    <td>
+                        <ul>
+                            <li>Carga atual/target</li>
+                            <li>Número de workers ativos</li>
+                            <li>Estado do sistema.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Botões de Ação</td>
+                    <td>Iniciar/Parar o teste de estresse com transições de estado visuais.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>5. Algoritmo de Controle</h2>
+            <div class="code-block">
+if current_cpu &lt; target - 5:
+    self.manager.spawn_worker()
+            </div>
+            <p><strong>Lógica Simples:</strong> Adiciona um worker sempre que a carga está 5% abaixo do target.</p>
+            <p><strong>Otimização:</strong> Uso de <code>adjust_lock</code> para evitar criação excessiva de workers.</p>
+        </div>
+        
+        <div class="card">
+            <h2>6. Estilização Avançada</h2>
+            <table>
+                <tr>
+                    <th>Recurso</th>
+                    <th>Detalhes</th>
+                </tr>
+                <tr>
+                    <td>Tema Escuro</td>
+                    <td>Cores #2d2d2d (fundo), #00ccff (destaques).</td>
+                </tr>
+                <tr>
+                    <td>Progress Bar Custom</td>
+                    <td>Estilo Horizontal.TProgressbar com cores neon (#00cc00).</td>
+                </tr>
+                <tr>
+                    <td>Tipografia</td>
+                    <td>Fontes Segoe UI com pesos diferentes para hierarquia visual.</td>
+                </tr>
+                <tr>
+                    <td>Estados Interativos</td>
+                    <td>Botões com hover effects e estados desabilitados visualmente distintos.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>7. Pontos Fortes</h2>
+            <ul>
+                <li><strong>Paralelismo Eficiente:</strong> Uso de multiprocessing para contornar o GIL.</li>
+                <li><strong>Interface Responsiva:</strong> Atualizações em tempo real sem travar a GUI.</li>
+                <li><strong>Controle de Recursos:</strong> Limpeza adequada de processos ao finalizar (<code>active.value = False</code>).</li>
+                <li><strong>Portabilidade:</strong> Compatível com sistemas Windows/Linux (via psutil).</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>8. Limitações e Melhorias Potenciais</h2>
+            <table>
+                <tr>
+                    <th>Limitação</th>
+                    <th>Sugestão de Melhoria</th>
+                </tr>
+                <tr>
+                    <td>Controle de Carga Básico</td>
+                    <td>Implementar algoritmo PID para ajuste fino de workers.</td>
+                </tr>
+                <tr>
+                    <td>Sem Redução de Workers</td>
+                    <td>Adicionar lógica para remover workers quando a carga exceder o target.</td>
+                </tr>
+                <tr>
+                    <td>Consumo de Memória</td>
+                    <td>Monitorar uso de RAM e adicionar limites.</td>
+                </tr>
+                <tr>
+                    <td>Logging</td>
+                    <td>Adicionar registro de eventos para diagnóstico.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>9. Exemplo de Uso</h2>
+            <div class="code-block">
+if __name__ == "__main__":
+    mp.freeze_support()  # Para builds congelados (exe)
+    app = StressApp()
+    app.mainloop()
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Conclusão</h2>
+            <p>O script é eficaz para testes de estresse controlados, combinando técnicas avançadas de paralelismo com uma interface polida. Para cenários críticos, recomenda-se:</p>
+            <ul>
+                <li>Adicionar controle de carga mais sofisticado.</li>
+                <li>Implementar monitoramento de recursos adicionais (RAM, temperatura).</li>
+                <li>Incluir logs detalhados para auditoria.</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>Síntese Técnica | cpu_stress_controller.py | Documentação gerada em 2024</p>
+        </footer>
+    </div>
+</body>
+</html>
