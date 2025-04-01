@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100vh;
+                 background-color: #2d3436;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": {"background": "#7048e8", "border": "#4d2ca3", "highlight": "#8c6cf7"}, "font": {"color": "white"}, "id": "CPU Stress Controller [GUI]", "label": "CPU Stress Controller [GUI]", "shape": "dot", "size": 30, "title": "Camada de Interface do Usu\u00e1rio\n- Controles de slider\n- Bot\u00f5es de in\u00edcio/parada\n- Exibi\u00e7\u00e3o de status", "x": -800, "y": -200}, {"color": {"background": "#3b5bdb", "border": "#2b4bb0", "highlight": "#5c7cfa"}, "font": {"color": "white"}, "id": "Worker Manager", "label": "Worker Manager", "shape": "box", "size": 35, "title": "Gerenciador de Workers\n- Controle de processos\n- Sincroniza\u00e7\u00e3o com locks\n- Balanceamento de carga", "x": 0, "y": 0}, {"color": {"background": "#40c057", "border": "#2f9e44", "highlight": "#69db7c"}, "font": {"color": "white"}, "id": "Processos Worker", "label": "Processos Worker", "shape": "circle", "size": 30, "title": "Processos de Carga\n- C\u00e1lculos intensivos\n- Sleep controlado\n- Auto-regula\u00e7\u00e3o", "x": 600, "y": -300}, {"color": {"background": "#5c7cfa", "border": "#4b6ec7", "highlight": "#7e9cff"}, "font": {"color": "white"}, "id": "multiprocessing", "label": "multiprocessing", "shape": "box", "size": 30, "title": "Gerenciamento de Processos\n- Cria\u00e7\u00e3o de workers\n- Valores compartilhados\n- Sincroniza\u00e7\u00e3o", "x": 800, "y": 200}, {"color": {"background": "#34a853", "border": "#2b8c46", "highlight": "#48d166"}, "font": {"color": "white"}, "id": "Sistema Operacional", "label": "Sistema Operacional", "shape": "circle", "size": 40, "title": "Kernel/N\u00facleo do SO\n- Escalonamento de processos\n- Aloca\u00e7\u00e3o de CPU\n- Gerenciamento de recursos", "x": 0, "y": 400}, {"color": {"background": "#228be6", "border": "#1a6db3", "highlight": "#3ba3ff"}, "font": {"color": "white"}, "id": "Thread de Monitoramento", "label": "Thread de Monitoramento", "shape": "database", "size": 30, "title": "Monitoramento em Tempo Real\n- Uso de psutil\n- Ajuste din\u00e2mico\n- Atualiza\u00e7\u00e3o da UI", "x": -600, "y": 200}, {"color": {"background": "#15aabf", "border": "#1098aa", "highlight": "#2bcbdb"}, "font": {"color": "white"}, "id": "psutil", "label": "psutil", "shape": "diamond", "size": 25, "title": "Biblioteca de Monitoramento\n- M\u00e9tricas de sistema\n- Cross-platform\n- Baixo overhead", "x": -400, "y": -400}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#5c7cfa", "from": "CPU Stress Controller [GUI]", "length": 500, "to": "Worker Manager", "width": 1}, {"arrows": "to", "color": "#40c057", "from": "Worker Manager", "length": 500, "to": "Processos Worker", "width": 1}, {"arrows": "to", "color": "#1a73e8", "from": "Worker Manager", "length": 500, "to": "multiprocessing", "width": 1}, {"arrows": "to", "color": "#34a853", "from": "Processos Worker", "length": 500, "to": "Sistema Operacional", "width": 1}, {"arrows": "to", "color": "#ff922b", "from": "Thread de Monitoramento", "length": 450, "to": "Worker Manager", "width": 1}, {"arrows": "to", "color": "#15aabf", "from": "Thread de Monitoramento", "length": 300, "to": "psutil", "width": 1}, {"arrows": "to", "color": "#f76707", "from": "psutil", "length": 600, "to": "Sistema Operacional", "width": 1}, {"arrows": "to", "color": "#adb5bd", "from": "multiprocessing", "length": 450, "to": "Sistema Operacional", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"enabled": true, "stabilization": {"enabled": true, "iterations": 1000, "updateInterval": 25}, "barnesHut": {"gravitationalConstant": -5000, "centralGravity": 0.05, "springLength": 500, "springConstant": 0.005, "damping": 0.15, "avoidOverlap": 0.9}, "minVelocity": 0.4, "maxVelocity": 8}, "nodes": {"borderWidth": 2, "shadow": {"enabled": true, "color": "rgba(0,0,0,0.5)", "size": 10, "x": 5, "y": 5}, "font": {"size": 14, "face": "Arial", "color": "#ffffff", "strokeWidth": 2, "strokeColor": "#2d3436"}}, "edges": {"smooth": {"type": "continuous", "roundness": 0.2}, "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"inherit": false}, "shadow": {"enabled": true, "color": "rgba(0,0,0,0.3)", "size": 5, "x": 3, "y": 3}, "length": 500}, "interaction": {"hover": true, "tooltipDelay": 200, "hideEdgesOnDrag": false, "multiselect": true, "zoomView": true, "dragView": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
