@@ -221,3 +221,117 @@ Histórico de alertas
 Detalhes de hardware
 
 Exportação para CSV
+
+# 🚀 System Monitor 5.06 - Monitoramento Avançado de Recursos
+
+![System Monitor Dashboard](https://via.placeholder.com/800x400?text=System+Monitor+Dashboard)  
+*Monitoramento em tempo real com relatórios profissionais*
+
+## 🎯 Objetivo Principal
+Monitorar em tempo real o desempenho do sistema (CPU, memória, disco, rede) e gerar **relatórios HTML detalhados** automaticamente após o término do monitoramento.
+
+## 🌟 Recursos Principais
+
+### 📊 Monitoramento em Tempo Real
+- Coleta dados de CPU, memória, disco e rede em intervalos configuráveis
+- Usa API nativa do Windows (`win32pdh`) + `psutil` como fallback
+- Monitora processos específicos selecionados pelo usuário
+
+### 🔔 Sistema de Alertas Inteligente
+- Detecta uso excessivo de CPU e memória
+- Identifica vazamentos de memória em processos
+- Monitora uso de memória virtual (swap)
+- Histórico completo de alertas
+
+### 📑 Geração de Relatórios Profissionais
+- Relatórios HTML completos com:
+  - 📈 Gráficos interativos de uso de recursos
+  - 📊 Tabelas detalhadas de processos
+  - ⚠️ Histórico de alertas
+  - ℹ️ Informações do sistema
+- Exportação para CSV e imagens de gráficos
+
+## � Arquitetura do Sistema
+```mermaid
+graph TD
+    A[SystemMonitor] -->|Coleta dados| B[CPU/Memória/Disco/Rede]
+    A --> C[AlertManager]
+    D[SystemMonitorGUI] -->|Interface| A
+    A -->|Gera| E[Relatórios HTML]
+💡 Recursos Avançados
+🕵️‍♂️ Detecção de vazamentos de memória
+
+🎨 Suporte a temas de interface (claro/escuro/azul)
+
+⚙️ Configuração persistente via JSON
+
+💻 Multiplataforma (Windows com fallback cross-platform)
+
+⚙️ Como Funciona
+Coleta de Dados
+Thread dedicada coleta métricas em intervalos configuráveis (padrão: 0.5s)
+
+Processamento
+
+Cálculo de médias/máximos/mínimos
+
+Detecção de padrões de vazamento
+
+Análise de variações de recursos
+
+Geração de Relatórios
+
+Gráficos com matplotlib
+
+Tabelas organizadas
+
+Salvamento automático
+
+🖥️ Interface Gráfica
+Gráficos dinâmicos em tempo real
+
+Controle completo do monitoramento
+
+Visualização de alertas
+
+🔄 Fluxo de Operação
+mermaid
+Copy
+sequenceDiagram
+    Usuário->>+GUI: Configura parâmetros
+    GUI->>+Monitor: Inicia thread
+    Monitor->>+Sistema: Coleta dados
+    Sistema-->>-Monitor: Métricas
+    Monitor->>+AlertManager: Verifica alertas
+    AlertManager-->>-GUI: Notifica usuário
+    Monitor->>+ReportGenerator: Gera HTML
+    ReportGenerator-->>-Usuário: Abre no navegador
+🆕 Inovações da Versão 5.06
+✅ Relatórios HTML profissionais
+
+✅ Monitoramento detalhado de memória por processo
+
+✅ Sistema de alertas mais inteligente
+
+✅ Interface gráfica com temas
+
+✅ Melhor tratamento de erros
+
+🛠️ Exemplo de Uso
+bash
+Copy
+# Modo GUI (padrão)
+python monitor.py
+
+# Modo CLI com opções avançadas
+python monitor.py --interval 1 --duration 120 --alert-cpu 90 --alert-mem 85
+👨‍💻 Público-Alvo
+Este sistema é ideal para:
+
+Administradores de sistemas
+
+Desenvolvedores de software
+
+Analistas de performance
+
+Qualquer profissional que precise monitorar recursos do sistema
