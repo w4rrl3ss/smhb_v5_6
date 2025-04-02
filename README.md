@@ -9,7 +9,7 @@ Uma ferramenta avançada de monitoramento de sistema que fornece informações d
 
 ![image](https://github.com/user-attachments/assets/62d82e53-52cd-428f-9627-b1333281067e)
 
-![image](https://github.com/user-attachments/assets/d17a6258-48fe-4e33-9f0c-005f4cb39388)
+![smhb_01](https://github.com/user-attachments/assets/904beb4c-6bdf-48d3-9dd6-e4995bc0b2da)
 
 ## 🏗️ Arquitetura do Sistema
 Para entender a estrutura e componentes do sistema, consulte a documentação de [Arquitetura do Sistema](https://w4rrl3ss.github.io/smhb_v5_6/system_architecture.html).
