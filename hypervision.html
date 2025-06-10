@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperVision - Documentação Técnica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #f8f9fa;
+            --dark: #2c3e50;
+            --darker: #1a252f;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --info: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            color: var(--light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .badge-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .badge-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 12px;
+            color: var(--primary);
+        }
+        
+        .card-body {
+            line-height: 1.8;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list i {
+            color: var(--success);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .code-block {
+            background-color: var(--darker);
+            color: var(--light);
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .tech-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .tech-desc {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .architecture {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .architecture img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .screenshot {
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .screenshot img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .screenshot-caption {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-bolt"></i> HyperVision</h1>
+            <p>Monitoramento avançado de hardware em tempo real com Python e PyQt5</p>
+        </header>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-info-circle"></i> Visão Geral</h2>
+            </div>
+            <div class="card-body">
+                <p>O HyperVision é um sistema de monitoramento de hardware desenvolvido em Python que fornece uma interface gráfica completa para visualização de dados de sensores do sistema, incluindo temperaturas, velocidades de ventoinhas, cargas de componentes e outros parâmetros críticos.</p>
+                
+                <div class="screenshot">
+                    <!-- Placeholder para screenshot -->
+                    <div style="background-color: #2c3e50; color: white; padding: 50px; border-radius: 4px; text-align: center;">
+                        <i class="fas fa-desktop" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                        <p>Screenshot da Interface HyperVision</p>
+                    </div>
+                    <p class="screenshot-caption">Interface principal do HyperVision mostrando dados de sensores e gráficos</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-cogs"></i> Funcionalidades Principais</h2>
+            </div>
+            <div class="card-body">
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Monitoramento em tempo real</strong> - Atualização contínua de dados de sensores a cada 2 segundos
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Interface gráfica intuitiva</strong> - Desenvolvida com PyQt5 para melhor experiência do usuário
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Categorização inteligente</strong> - Organização automática de sensores por tipo e componente
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Sistema de alertas</strong> - Cores e ícones indicam status crítico baseado em thresholds configuráveis
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Gráficos históricos</strong> - Visualização temporal de dados com QChart
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Filtros avançados</strong> - Capacidade de filtrar por status ou componente específico
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Persistência de estados</strong> - Mantém preferências de visualização entre atualizações
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-microchip"></i> Arquitetura Técnica</h2>
+            </div>
+            <div class="card-body">
+                <p>O HyperVision utiliza uma arquitetura modular que combina várias tecnologias para fornecer monitoramento abrangente:</p>
+                
+                <div class="architecture">
+                    <!-- Diagrama de arquitetura simplificado -->
+                    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                            <div style="margin: 0 15px; text-align: center;">
+                                <div style="background-color: #3498db; color: white; padding: 15px; border-radius: 8px; width: 120px; margin: 0 auto 10px;">
+                                    <i class="fas fa-desktop" style="font-size: 2rem;"></i>
+                                    <div>Hardware</div>
+                                </div>
+                            </div>
+                            <div style="margin: 0 15px; text-align: center;">
+                                <div style="background-color: #2ecc71; color: white; padding: 15px; border-radius: 8px; width: 120px; margin: 0 auto 10px;">
+                                    <i class="fas fa-cog" style="font-size: 2rem;"></i>
+                                    <div>LibreHardwareMonitor</div>
+                                </div>
+                            </div>
+                            <div style="margin: 0 15px; text-align: center;">
+                                <div style="background-color: #e74c3c; color: white; padding: 15px; border-radius: 8px; width: 120px; margin: 0 auto 10px;">
+                                    <i class="fas fa-code" style="font-size: 2rem;"></i>
+                                    <div>Python Core</div>
+                                </div>
+                            </div>
+                            <div style="margin: 0 15px; text-align: center;">
+                                <div style="background-color: #f39c12; color: white; padding: 15px; border-radius: 8px; width: 120px; margin: 0 auto 10px;">
+                                    <i class="fas fa-tv" style="font-size: 2rem;"></i>
+                                    <div>PyQt5 UI</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.9rem; color: #7f8c8d;">
+                            Diagrama simplificado da arquitetura do HyperVision
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 25px 0 15px; color: var(--dark);">Fluxo de Dados</h3>
+                <ol style="margin-left: 20px; line-height: 1.8;">
+                    <li>Inicialização do monitor de hardware via LibreHardwareMonitor</li>
+                    <li>Coleta periódica de dados de sensores</li>
+                    <li>Processamento e categorização dos dados</li>
+                    <li>Atualização da interface gráfica</li>
+                    <li>Renderização de gráficos históricos</li>
+                    <li>Tratamento de interações do usuário</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-code"></i> Principais Componentes do Código</h2>
+            </div>
+            <div class="card-body">
+                <h3 style="margin: 20px 0 15px; color: var(--dark);">Classe HardwareMonitorGUI</h3>
+                <p>Classe principal que herda de QMainWindow e gerencia toda a aplicação:</p>
+                
+                <div class="code-block">
+                    class HardwareMonitorGUI(QMainWindow):
+                        def __init__(self):
+                            super().__init__()
+                            
+                            # Estruturas de dados
+                            self.sensor_data = {}
+                            self.sensor_history = {}
+                            self.processed_sensors = set()
+                            
+                            # Configuração inicial
+                            self.initialize_hardware_monitor()
+                            self.setup_ui()
+                            
+                            # Timer para atualizações
+                            self.update_timer = QTimer()
+                            self.update_timer.timeout.connect(self.update_sensor_data)
+                            self.update_timer.start(2000)
+                </div>
+                
+                <h3 style="margin: 25px 0 15px; color: var(--dark);">Métodos Principais</h3>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li><strong>initialize_hardware_monitor()</strong> - Configura a conexão com o LibreHardwareMonitor</li>
+                    <li><strong>setup_ui()</strong> - Cria todos os componentes da interface gráfica</li>
+                    <li><strong>update_sensor_data()</strong> - Atualiza os dados dos sensores</li>
+                    <li><strong>process_sensor()</strong> - Processa dados individuais de sensores</li>
+                    <li><strong>update_sensor_tree()</strong> - Atualiza a árvore de visualização</li>
+                    <li><strong>update_sensor_charts()</strong> - Gera/atualiza os gráficos históricos</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-tools"></i> Tecnologias Utilizadas</h2>
+            </div>
+            <div class="card-body">
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fab fa-python"></i></div>
+                        <div class="tech-name">Python 3</div>
+                        <div class="tech-desc">Linguagem principal</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fas fa-window-maximize"></i></div>
+                        <div class="tech-name">PyQt5</div>
+                        <div class="tech-desc">Interface gráfica</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="tech-name">LibreHardwareMonitor</div>
+                        <div class="tech-desc">Monitoramento de hardware</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="tech-name">QChart</div>
+                        <div class="tech-desc">Visualização de gráficos</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fab fa-windows"></i></div>
+                        <div class="tech-name">ctypes</div>
+                        <div class="tech-desc">Integração COM</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fas fa-database"></i></div>
+                        <div class="tech-name">clr</div>
+                        <div class="tech-desc">Acesso a .NET</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-download"></i> Instalação e Uso</h2>
+            </div>
+            <div class="card-body">
+                <h3 style="margin: 20px 0 15px; color: var(--dark);">Pré-requisitos</h3>
+                <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.8;">
+                    <li>Python 3.7 ou superior</li>
+                    <li>Sistema Windows (compatível com LibreHardwareMonitor)</li>
+                    <li>Bibliotecas listadas em requirements.txt</li>
+                </ul>
+                
+                <h3 style="margin: 20px 0 15px; color: var(--dark);">Instalação</h3>
+                <div class="code-block">
+                    # Clone o repositório
+                    git clone https://github.com/seu-usuario/hypervision.git
+                    cd hypervision
+                    
+                    # Crie um ambiente virtual (recomendado)
+                    python -m venv venv
+                    venv\Scripts\activate
+                    
+                    # Instale as dependências
+                    pip install -r requirements.txt
+                </div>
+                
+                <h3 style="margin: 20px 0 15px; color: var(--dark);">Execução</h3>
+                <div class="code-block">
+                    python hypervision.py
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>HyperVision - Monitoramento Avançado de Hardware</p>
+            <p>Desenvolvido por Bankai © 2023</p>
+        </footer>
+    </div>
+</body>
+</html>
